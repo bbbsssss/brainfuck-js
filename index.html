@@ -48,41 +48,49 @@
 
       $('example').onchange = function() {
         $('out').innerText = '';
+        var file = '';
 
         if (this.value == 'hello') {
           $('in').value = '';
-          $('bf').value = '++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.';
+          file = 'examples/hello.bf';
         }
         else if (this.value == 'repeat1') {
           $('in').value = 'Hello World!';
-          $('bf').value = ',[.,]'; // 0 EOF
-
+          file = 'examples/repeat1.bf';
         }
         else if (this.value == 'repeat2') {
           $('in').value = 'Hello World!';
-          $('bf').value = ',+[-.,+]'; // -1 EOF
-
+          file = 'examples/repeat2.bf';
         }
         else if (this.value == 'repeat3') {
           $('in').value = 'Hello World!';
-          $('bf').value = ',[.[-],]'; // as is EOF
-
+          file = 'examples/repeat3.bf';
         }
         else if (this.value == 'reverse') {
           $('in').value = 'Hello World!';
           $('bf').value = '>-,+[>-,+]<[-.<]';
+          file = 'examples/reverse.bf';
         }
         else if (this.value == 'rot13') {
           $('in').value = 'Hello World!';
-          $('bf').value = '-,+[-[>>++++[>++++++++<-]<+<-[>+>+>-[>>>]<[[>+<-]>>+>]<<<<<-]]>>>[-]+>--[-[<->+++[-]]]<[++++++++++++<[>-[>+>>]>[+[<+>-]>+>>]<<<<<-]>>[<+>-]>[-[-<<[-]>>]<<[<<->>-]>>]<<[<<+>>-]]<[-]<.[-]<-,+]';
+          file = 'examples/rot13.bf';
         }
         else if (this.value == 'fib') {
           $('in').value = '';
-          $('bf').value = '+++++++++++>+>>>>++++++++++++++++++++++++++++++++++++++++++++>++++++++++++++++++++++++++++++++<<<<<<[>[>>>>>>+>+<<<<<<<-]>>>>>>>[<<<<<<<+>>>>>>>-]<[>++++++++++[-<-[>>+>+<<<-]>>>[<<<+>>>-]+<[>[-]<[-]]>[<<[>>>+<<<-]>>[-]]<<]>>>[>>+>+<<<-]>>>[<<<+>>>-]+<[>[-]<[-]]>[<<+>>[-]]<<<<<<<]>>>>>[++++++++++++++++++++++++++++++++++++++++++++++++.[-]]++++++++++<[->-<]>++++++++++++++++++++++++++++++++++++++++++++++++.[-]<<<<<<<<<<<<[>>>+>+<<<<-]>>>>[<<<<+>>>>-]<-[>>.>.<<<[-]]<<[>>+>+<<<-]>>>[<<<+>>>-]<<[<+>-]>[<+>-]<<<-]';
+          file = 'examples/fib.bf';
         }
         else {
           $('in').value = '';
           $('bf').value = '';
+          file = '';
+        }
+
+        if (file != '') {
+          var request = new XMLHttpRequest();
+          request.open('GET', file, false);
+          request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+          request.send(null);
+          $('bf').value = request.responseText;
         }
       };
 
