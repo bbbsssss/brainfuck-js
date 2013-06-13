@@ -32,6 +32,7 @@
       <option value="reverse">Reverse</option>
       <option value="rot13">ROT13</option>
       <option value="fib">Fibonacci</option>
+      <option value="99bottles">99 Bottles of Beer</option>
     </select></p>
     <p>
     Input <input id="in" type="text"></p>
@@ -78,6 +79,10 @@
         else if (this.value == 'fib') {
           $('in').value = '';
           file = 'examples/fib.bf';
+        }
+        else if (this.value == '99bottles') {
+          $('in').value = '';
+          file = 'examples/99bottles.bf';
         }
         else {
           $('in').value = '';
