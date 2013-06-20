@@ -3,6 +3,8 @@ brainfuck-js
 
 A brainfuck interpreter written in JavaScript
 
+Demo available at http://smjth.github.io/brainfuck-js/
+
 ## Usage ##
 
 ```javascript
