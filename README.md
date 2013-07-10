@@ -8,7 +8,7 @@ Demo available at http://smjth.github.io/brainfuck-js/
 ## Usage ##
 
 ```javascript
-var result = bf(program,input,debut,bits);
+var result = bf(program, input, debug, bits);
 ```
 
 The ```bf``` function will return a string containing the output of the program. In this example the output is being stored in ```result```.
